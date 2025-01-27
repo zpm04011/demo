@@ -1,0 +1,198 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFrameworks>net8.0-android;net8.0-ios;net8.0-maccatalyst</TargetFrameworks>
+		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net8.0-windows10.0.19041.0</TargetFrameworks>
+		<!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
+		<!-- <TargetFrameworks>$(TargetFrameworks);net8.0-tizen</TargetFrameworks> -->
+
+		<!-- Note for MacCatalyst:
+		The default runtime is maccatalyst-x64, except in Release config, in which case the default is maccatalyst-x64;maccatalyst-arm64.
+		When specifying both architectures, use the plural <RuntimeIdentifiers> instead of the singular <RuntimeIdentifier>.
+		The Mac App Store will NOT accept apps with ONLY maccatalyst-arm64 indicated;
+		either BOTH runtimes must be indicated or ONLY macatalyst-x64. -->
+		<!-- For example: <RuntimeIdentifiers>maccatalyst-x64;maccatalyst-arm64</RuntimeIdentifiers> -->
+
+		<OutputType>Exe</OutputType>
+		<RootNamespace>train1</RootNamespace>
+		<UseMaui>true</UseMaui>
+		<SingleProject>true</SingleProject>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+
+		<!-- Display name -->
+		<ApplicationTitle>train1</ApplicationTitle>
+
+		<!-- App Identifier -->
+		<ApplicationId>com.companyname.train1</ApplicationId>
+
+		<!-- Versions -->
+		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+		<ApplicationVersion>1</ApplicationVersion>
+
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">11.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">13.1</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
+		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<!-- App Icon -->
+		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
+
+		<!-- Splash Screen -->
+		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
+
+		<!-- Images -->
+		<MauiImage Include="Resources\Images\*" />
+		<MauiImage Update="Resources\Images\dotnet_bot.png" Resize="True" BaseSize="300,185" />
+                <MauiImage Update="Resources\Images\recommend.svg" />
+                <MauiImage Update="Resources\Images\coin.svg" />
+<MauiImage Update="Resources\Images\example.png" />
+                <MauiImage Update="Resources\Images\bean.svg" />
+<MauiImage Update="Resources\Images\bean.png" />
+<MauiImage Update="Resources\Images\home1.png" />
+<MauiImage Update="Resources\Images\home2.png" />
+<MauiImage Update="Resources\Images\knowledge1.png" />
+<MauiImage Update="Resources\Images\knowledge2.png" />
+<MauiImage Update="Resources\Images\community1.png" />
+<MauiImage Update="Resources\Images\community2.png" />
+<MauiImage Update="Resources\Images\user1.png" />
+<MauiImage Update="Resources\Images\user2.png" />
+
+
+
+
+
+		<!-- Custom Fonts -->
+		<MauiFont Include="Resources\Fonts\*" />
+
+                <!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
+		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
+                <MauiAsset Include="Resources\Raw\background_vedio.mp4" />
+
+			</ItemGroup>
+
+	<ItemGroup>
+	  <AndroidResource Remove="Platforms\Android\新文件夹1\**" />
+	  <AndroidResource Remove="Platforms\Android\新文件夹2\**" />
+	  <AndroidResource Remove="Platforms\Android\新文件夹\**" />
+	  <Compile Remove="Platforms\Android\新文件夹1\**" />
+	  <Compile Remove="Platforms\Android\新文件夹2\**" />
+	  <Compile Remove="Platforms\Android\新文件夹\**" />
+	  <EmbeddedResource Remove="Platforms\Android\新文件夹1\**" />
+	  <EmbeddedResource Remove="Platforms\Android\新文件夹2\**" />
+	  <EmbeddedResource Remove="Platforms\Android\新文件夹\**" />
+	  <MauiCss Remove="Platforms\Android\新文件夹1\**" />
+	  <MauiCss Remove="Platforms\Android\新文件夹2\**" />
+	  <MauiCss Remove="Platforms\Android\新文件夹\**" />
+	  <MauiXaml Remove="Platforms\Android\新文件夹1\**" />
+	  <MauiXaml Remove="Platforms\Android\新文件夹2\**" />
+	  <MauiXaml Remove="Platforms\Android\新文件夹\**" />
+	  <None Remove="Platforms\Android\新文件夹1\**" />
+	  <None Remove="Platforms\Android\新文件夹2\**" />
+	  <None Remove="Platforms\Android\新文件夹\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiAsset Remove="Resources\Raw\HomeViewMagicsNew.json" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiImage Remove="Resources\Images\bean.svg" />
+	  <MauiImage Remove="Resources\Images\coin.svg" />
+	  <MauiImage Remove="Resources\Images\recommend.svg" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="Resources\Images\bean.svg" />
+	  <None Remove="Resources\Images\card_detector.png" />
+	  <None Remove="Resources\Images\change_position.png" />
+	  <None Remove="Resources\Images\circle_reading.png" />
+	  <None Remove="Resources\Images\coin.png" />
+	  <None Remove="Resources\Images\coin.svg" />
+	  <None Remove="Resources\Images\comment.png" />
+	  <None Remove="Resources\Images\example.png" />
+	  <None Remove="Resources\Images\heart.png" />
+	  <None Remove="Resources\Images\home1.png" />
+	  <None Remove="Resources\Images\home2.png" />
+	  <None Remove="Resources\Images\one_out_of_four.png" />
+	  <None Remove="Resources\Images\recommend.png" />
+	  <None Remove="Resources\Images\recommend.svg" />
+	  <None Remove="Resources\Images\remember_card.png" />
+	  <None Remove="Resources\Images\search_card.png" />
+	  <None Remove="Resources\Images\word_prediction.png" />
+	  <None Remove="Resources\Images\xiaomo.png" />
+	  <None Remove="Resources\Raw\HomeViewMagicsNew.json" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Include="Resources\Raw\HomeViewMagicsNew.json" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="CommunityToolkit.Maui" Version="9.1.1" />
+		<PackageReference Include="CommunityToolkit.Maui.MediaElement" Version="4.1.2" />
+		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
+		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
+		<PackageReference Include="SkiaSharp" Version="3.116.1" />
+		<PackageReference Include="SkiaSharp.Extended" Version="2.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="Pages\MagicInformationPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\MagicShowPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\CommunityView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\HomeView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+<Compile Update="Views\HomeView.xaml.cs">
+        <DependentUpon>HomeView.xaml</DependentUpon>
+    </Compile>
+	  <MauiXaml Update="Views\KnowledgeView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\MagicListView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+<Compile Update="Views\MagicListView.xaml.cs">
+        <DependentUpon>MagicListView.xaml</DependentUpon>
+    </Compile>
+	  <MauiXaml Update="Views\UserView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Views1\BriefIntroductionView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Views1\CommentsView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Views1\DemoView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Views1\TeachingView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	</ItemGroup>
+
+
+<PropertyGroup>
+    <!-- Add this line -->
+    <EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>
+</PropertyGroup>
+
+
+<ProjectExtensions><VisualStudio><UserProperties XamarinHotReloadDebuggerTimeoutExceptiontrain1HideInfoBar="True" /></VisualStudio></ProjectExtensions>
+
+  
+
+</Project>
