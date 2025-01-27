@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ScrollView xmlns="http://schemas.microsoft.com/dotnet/2021/maui" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit" 
+             xmlns:local="clr-namespace:train1.Views"             
+             x:Class="train1.Views.HomeView"
+             BackgroundColor="Black">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="170"/>
+            <RowDefinition Height="0"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- 视频部分 -->
+        <toolkit:MediaElement x:Name="Video"
+                              Grid.RowSpan="2"
+                              Grid.Row="0"
+                              ShouldAutoPlay="True"
+                              ShouldShowPlaybackControls="False"
+                              ShouldLoopPlayback="True"
+                              Source="embed://Resources/Raw/background_vedio.mp4" 
+                              Margin="0"
+                              HorizontalOptions="FillAndExpand"
+                              HeightRequest="210"
+                              VerticalOptions="FillAndExpand"
+                              Aspect="AspectFill"/>
+        <!--CornerRadius="20"-->
+
+        <!-- 视频内容 -->
+
+        <!-- 内容部分 -->
+        <Border Grid.Row="1" 
+                Grid.RowSpan="2"
+                x:Name="NeirongBorder"
+                StrokeThickness="2"
+                BackgroundColor="#4682B4"
+                Padding="0"
+                StrokeShape="RoundRectangle 20,20,0,0"
+                Stroke="#4682B4"
+                Margin="0">
+
+            <local:MagicListView/>
+
+        </Border>
+    </Grid>
+</ScrollView>

@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:train1.Views"
+             x:Class="train1.Views.MagicListView">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="110"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+    
+        <!-- 水平列表 -->
+        <CollectionView x:Name="VerticalCollectionView"
+                    ItemsSource="{Binding MagicItemsSource}"
+                        Grid.Row="0">
+            <CollectionView.ItemsLayout>
+            <GridItemsLayout Orientation="Vertical"
+                             Span="3"
+                             SnapPointsType="MandatorySingle"
+                             SnapPointsAlignment="Start"/>
+            <!--上面?-->
+        </CollectionView.ItemsLayout>
+        <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <!--Padding内部边距-->
+                    <!--Margin外部边距-->
+                    <Frame BorderColor="#5B95C8"
+                           BackgroundColor="#5B95C8"
+                       Padding="5"
+                       Margin="7"
+                       CornerRadius="8"
+                       HeightRequest="100">
+                    <StackLayout>
+                        <!--Image-->
+                            <Frame
+                                   WidthRequest="50"
+                                   HeightRequest="50"
+                                   CornerRadius="50"
+                                   BackgroundColor="#87CEEB"
+                                   IsClippedToBounds="True"
+                                BorderColor="#5B95C8">
+                                <!-- 将图片放置在圆形背景上 -->
+                                <Image
+                                       Source="{Binding Picture}"
+                                       WidthRequest="50"
+                                       HeightRequest="50"
+                                       Aspect="AspectFill"/>
+                            </Frame>
+
+                            <Label Text="{Binding Name}"
+                               FontSize="Small"
+                                   TextColor="#E0E0E0"/>
+                            <Label Text="{Binding Description}"
+                               FontSize="Medium"
+                               FontAttributes="Bold"
+                                   TextColor="White"
+                                   HorizontalOptions="Center"/>
+
+                    </StackLayout>
+                </Frame>
+            </DataTemplate>
+
+        </CollectionView.ItemTemplate>
+    </CollectionView>
+        
+        <!--垂直列表-->
+        <CollectionView x:Name="HorizontalCollectionView"
+                        ItemsSource="{Binding MagicCoverDataSource }"
+                        Grid.Row="1">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Horizontal"
+                                 Span="9"
+                                 HorizontalItemSpacing="900"
+                                 VerticalItemSpacing="0"/>
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame BorderColor="White"
+                           Padding="5"
+                           Margin="20,7,0,7"
+                           CornerRadius="8"
+                           WidthRequest="315"
+                           HeightRequest="50"
+                           HorizontalOptions="Center">
+                        <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnMagicItemTapped"/>
+                        </Frame.GestureRecognizers>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="48"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="0"/>
+                                <ColumnDefinition Width="60"/>
+
+
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+
+
+                            </Grid.RowDefinitions>
+                            <!-- 设置Frame的高度 -->
+                        <StackLayout Orientation="Horizontal"
+                                     Grid.Row="0"
+                                     Grid.RowSpan="4"
+                                     Grid.Column="0"
+                                     Margin="0,0,0,0">
+                                <Image Source="{Binding coverPicture}"                                       
+                                       Aspect="AspectFill"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal"
+                                         Grid.Row="1"
+                                         Grid.RowSpan="4"
+                                         Grid.Column="1"
+                                         Margin="0">
+                                <Label Text="{Binding magicName}"
+                                       FontSize="17"
+                                       FontAttributes="Bold"/>
+                        </StackLayout>
+                            <StackLayout Grid.Column="2"
+                                         Grid.RowSpan="2"
+                                         Grid.Row="0"
+                                         Orientation="Horizontal">
+                                <Image Source="heart.png"
+                                       Grid.Row="0"
+                                       WidthRequest="11"
+                                       HeightRequest="11"
+                                       Aspect="AspectFill"/>
+                            </StackLayout>
+                            <StackLayout Grid.Row="0"
+                                         Grid.RowSpan="2"
+                                         Grid.Column="3"
+                                         Grid.ColumnSpan="2">
+                                <Label Text="{Binding likesCount}"
+                                       FontSize="7"
+                                       WidthRequest="40"
+                                       Margin="15,4,0,0"/>
+                                </StackLayout>
+                        
+                        <StackLayout Grid.Column="2"
+                                     Grid.Row="2"
+                                     Grid.RowSpan="2"
+                                     Orientation="Horizontal">
+                                <Image Source="comment.png"
+                                       WidthRequest="11"
+                                       HeightRequest="11"
+                                       Aspect="AspectFill"/>
+                        </StackLayout>
+                            <StackLayout Grid.Column="3"
+                                     Grid.Row="2"
+                                     Grid.RowSpan="2"
+                                         Grid.ColumnSpan="2">
+                                <Label Text="{Binding commentsCount}"
+                                       FontSize="7"
+                                       Margin="15,4,0,0"
+                                       WidthRequest="35"/>
+                        </StackLayout>
+                        
+                        </Grid>
+                        
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentView>
